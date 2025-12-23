@@ -113,7 +113,9 @@ class ProfileView extends StatelessWidget {
             ),
             child: CustomButton(
               title: 'Next',
-              onPressed: controller.goToVerification,
+              onPressed: controller.onBottomNavigationScreen
+              //controller.goToVerification,
+
             ),
           ),
         );

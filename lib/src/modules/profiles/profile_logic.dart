@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/modules/bottom_nav/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,4 +38,10 @@ class ProfileLogic extends GetxController {
   void goToVerification() {
     if (!form2Key.currentState!.validate()) return;
   }
+
+  void onBottomNavigationScreen() {
+    Get.to(() => BottomNavigationScreen());
+  }
+
+
 }
