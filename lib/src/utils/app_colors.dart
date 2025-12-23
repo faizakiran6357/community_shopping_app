@@ -17,9 +17,10 @@ class AppColors {
   static const Color hintGrey = Color(0xFFA4A4A4);
   static const Color lightGrey = Color(0xFFAAAAAA);
   static const Color lightgrey = Color(0xFFB6B6B6);
-   static const Color whitegrey = Color(0xFFDBDBDB);
-  
+  static const Color whitegrey = Color(0xFFDBDBDB);
 
+  
+   static const Color red = Colors.red;
   // ===============================
   // BACKGROUND / SURFACE
   // ===============================
