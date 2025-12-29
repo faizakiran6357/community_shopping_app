@@ -1,9 +1,9 @@
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'logic.dart';
-
 class BottomNavigationScreen extends StatelessWidget {
   const BottomNavigationScreen({super.key});
 
@@ -19,18 +19,22 @@ class BottomNavigationScreen extends StatelessWidget {
               index: logic.selectedIndex.value,
               children: logic.pages,
             ),
+
+            /// 🔽 Bottom Navigation
             bottomNavigationBar: SizedBox(
-              height: 70,
+              height: 9.h, // ✅ responsive height
               child: Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: [
+
+                  /// 🎨 Background paint
                   CustomPaint(
-                    size: Size(MediaQuery.of(context).size.width, 70),
+                    size: Size(Get.width, 9.h),
                     painter: BottomBarPainter(),
                   ),
 
-                  // Bottom navigation items (FOREGROUND with pointer events)
+                  /// 🧭 Navigation items
                   Positioned.fill(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -47,7 +51,9 @@ class BottomNavigationScreen extends StatelessWidget {
                           index: 1,
                           logic: logic,
                         ),
-                        const SizedBox(width: 80), // Space for center button
+
+                        SizedBox(width: 12.w), // ✅ center gap
+
                         _navItem(
                           icon: shoppingIcon,
                           label: 'Shopping',
@@ -64,28 +70,30 @@ class BottomNavigationScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Center floating button
+                  /// 🔵 Center Floating Scan Button
                   Positioned(
-                    top: -15,
+                    top: -2.h, // ✅ instead of -15
                     child: GestureDetector(
                       onTap: () {
                         print("🔵 Scan button tapped!");
-                        // Add your scan logic here
                       },
                       child: Container(
-                        width: 65,
+                        width: 65, // ✅ instead of 65
                         height: 65,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: AppColors.primaryButtonGradient,
                         ),
                         child: Center(
-                          child: 
-                          SizedBox(
+                          child: SizedBox(
+                            width:28, // ✅ instead of 28
                             height: 28,
-                            width: 28,
-                            child: Image(image: AssetImage(scannerIcon),)))
-                       
+                            child: Image.asset(
+                              scannerIcon,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -97,6 +105,8 @@ class BottomNavigationScreen extends StatelessWidget {
       },
     );
   }
+}
+
 
   Widget _navItem({
     required String icon,
@@ -141,7 +151,7 @@ class BottomNavigationScreen extends StatelessWidget {
       ),
     );
   }
-}
+
 
 // Custom painter for bottom bar with curved notch
 class BottomBarPainter extends CustomPainter {

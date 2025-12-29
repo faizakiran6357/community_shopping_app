@@ -2,6 +2,7 @@ import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({super.key});
@@ -9,60 +10,60 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48, 
+      height: 5.5.h, // 🔹 responsive height (instead of 48)
       child: TextField(
+        style: TextStyle(
+          fontSize: 12.sp,
+          color: AppColors.whiteColor,
+        ),
         decoration: InputDecoration(
           hintText: 'Search for a product',
           hintStyle: StyleRefer.robotoRegular.copyWith(
-            fontSize: 14,
+            fontSize: 12.sp, // 🔹 responsive font
             color: AppColors.whiteColor,
             fontWeight: FontWeight.w400,
           ),
 
           /// 🔍 Prefix icon
           prefixIcon: Padding(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(1.h),
             child: CircleAvatar(
+              radius: 2.h,
               backgroundColor: AppColors.whiteColor,
-              child: const Icon(Icons.search, color: AppColors.black),
+              child: Icon(
+                Icons.search,
+                color: AppColors.black,
+                size: 2.5.h,
+              ),
             ),
           ),
 
-          /// 📷 / Scan icon (suffix)
+          /// 📷 Scan icon
           suffixIcon: Padding(
-            padding: EdgeInsets.only(right: 8),
-            child: Image(image: AssetImage(scanIcon), width: 24, height: 24),
+            padding: EdgeInsets.only(right: 2.w),
+            child: Image(
+              image: AssetImage(scanIcon),
+              width: 5.w,
+              height: 5.w,
+            ),
           ),
 
           filled: true,
           fillColor: AppColors.whiteColor.withOpacity(0.25),
 
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50), // 🔹 fully circular
-
-            borderSide: BorderSide(
-              color: AppColors.white.withOpacity(0.6),
-              width: 1,
-            ),
-          ),
-
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
-            borderSide: BorderSide(
-              color: AppColors.white.withOpacity(0.6),
-              width: 1,
-            ),
-          ),
-
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
-            borderSide: BorderSide(
-              color: AppColors.white.withOpacity(0.6),
-              width: 1,
-            ),
-          ),
+          border: _border,
+          enabledBorder: _border,
+          focusedBorder: _border,
         ),
       ),
     );
   }
+
+  OutlineInputBorder get _border => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        borderSide: BorderSide(
+          color: AppColors.white.withOpacity(0.6),
+          width: 0.2.w, // 🔹 responsive border width
+        ),
+      );
 }

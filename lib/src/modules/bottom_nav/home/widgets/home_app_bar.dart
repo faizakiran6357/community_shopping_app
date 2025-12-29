@@ -3,6 +3,7 @@ import 'package:community_shopping_app/src/modules/bottom_nav/home/widgets/shopp
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -20,39 +21,58 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 315,
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(gradient: AppColors.primaryButtonGradient),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        gradient: AppColors.primaryButtonGradient,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 60),
+          /// 🔹 top spacing
+          6.h.height,
+
+          /// 🔹 AppBar Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image(image: AssetImage(drawer), width: 24, height: 24),
+              Image(image: AssetImage(drawer), width: 6.w, height: 6.w),
 
               Text(
                 'Home',
                 style: StyleRefer.robotoMedium.copyWith(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   color: AppColors.whiteColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),
 
-              Image(image: AssetImage(notification), width: 24, height: 24),
+              Image(image: AssetImage(notification), width: 6.w, height: 6.w),
             ],
           ),
-          const SizedBox(height: 16),
+
+          /// 🔹 space
+          2.h.height,
+
+          /// 🔍 Search Bar
           const SearchBarWidget(),
-          const SizedBox(height: 16),
+
+          /// 🔹 space
+          2.h.height,
+
+          /// 🛒 Shopping List Card
           ShoppingListCard(
             userName: userName,
             onAdd: onAdd,
             onSeeAll: onSeeAll,
           ),
+
+          /// 🔹 bottom spacing
+          3.h.height,
         ],
       ),
     );
