@@ -379,7 +379,7 @@ class LocationView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: CustomButton(
                       title: 'Next',
-                      onPressed: controller.goNext,
+                      onPressed: controller.goToBottomNavigation,
                     ),
                   ),
                 ],
