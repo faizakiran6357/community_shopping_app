@@ -32,7 +32,7 @@ class SignInEmailView extends GetView<SignInLogic> {
               SizedBox(height: topPadding),
               const Center(child: AuthLogoTitle()),
               const SizedBox(height: 32),
-
+                        
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(

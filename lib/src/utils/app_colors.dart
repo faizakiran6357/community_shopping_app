@@ -24,6 +24,8 @@ class AppColors {
   static const Color lightred = Color(0xFFDF4A3C);
   static const Color greyshade = Color(0xFFD4D4D4);
   static const Color blueshade = Color(0xFF0040F7);
+   static const Color whitegrey = Color(0xFFDBDBDB);
+   static const Color whiteColor = Color(0xFFFFFFFF);
 
   // ===============================
   // BACKGROUND / SURFACE

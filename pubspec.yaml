@@ -35,16 +35,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/shopping_icon.png
-    - assets/images/phone.png
-    - assets/images/email.png
-    - assets/images/edit.png
-    - assets/images/person.png
-    - assets/images/personIcon.png
-    - assets/images/postal.png
-    - assets/images/emailIcon.png
-    - assets/images/locationIcon.png
-    - assets/images/arrowshape.png
+    - assets/
+    - assets/images/
+    # - assets/images/email.png
+    # - assets/images/edit.png
+    # - assets/images/person.png
+    # - assets/images/personIcon.png
+    # - assets/images/postal.png
+    # - assets/images/emailIcon.png
+
   fonts:
     - family: RobotoBold
       fonts:
