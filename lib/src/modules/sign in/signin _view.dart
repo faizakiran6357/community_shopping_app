@@ -13,7 +13,6 @@ import 'package:get/get.dart';
 class SignInView extends StatelessWidget {
   const SignInView({super.key});
 
- 
 
   @override
   Widget build(BuildContext context) {

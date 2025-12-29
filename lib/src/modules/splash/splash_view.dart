@@ -37,16 +37,29 @@ class SplashView extends StatelessWidget {
               // ===============================
               // TITLE
               // ===============================
-              Text(
-                'Community Shopping',
-                textAlign: TextAlign.center,
-                style: StyleRefer.roundKeySoftBold.copyWith(
-                  fontSize: 34,
-                  height: 1,
-                  letterSpacing: 0.44, // 1%
-                  color: AppColors.black,
-                ),
-              ),
+            
+               Text.rich(
+                      TextSpan(
+                          children: [
+                            TextSpan(
+                            text: 'Community ',
+                       style: StyleRefer.roundKeySoftBold.copyWith(
+                       fontSize: 34,
+                       letterSpacing: 0.44, // 1%
+                      color: AppColors.black,
+                       ),
+                   ),
+            TextSpan(
+            text: 'Shopping',
+             style: StyleRefer.roundKeySoftBold.copyWith(
+             fontSize: 34,
+             letterSpacing: 0.44, // 1%
+             color: AppColors.primary,
+             ),
+            ),
+         ],
+      ),
+    ),
 
               const Spacer(),
 

@@ -26,4 +26,33 @@ class AppStrings {
 
   static const String otpSentMessage =
       "A 6 digit OTP has been sent to";
+
+
+      // ERROR Strings//
+    static const String firstname  =
+      "First name is required";
+
+        static const String lastname  =
+      "Last name is required";
+
+       static const String email  =
+      "Email is required";
+
+         static const String validemail  =
+        "Enter a valid email";
+
+       static const String phone  =
+        "Phone number is required";
+
+        static const String gender  =
+        "Gender is required";
+
+        static const String postal =
+        "Postal code is required";
+
+         static const String location =
+        "location is required";
+
+
+
 }

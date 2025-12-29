@@ -1,3 +1,4 @@
+
 import 'package:community_shopping_app/src/modules/profiles/profile_logic.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
@@ -7,8 +8,23 @@ import 'package:community_shopping_app/src/widgets/custom_button.dart';
 import 'package:community_shopping_app/src/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
+
+  String? genderValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return AppStrings.gender;
+    }
+    return null;
+  }
+
+  String? phoneValidator(String? value) {
+    if (value == null || value.isEmpty) {
+    return AppStrings.phone;
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +62,7 @@ class ProfileView extends StatelessWidget {
                   Text(
                     'Profile Setup',
                     style: StyleRefer.robotoSemiBold.copyWith(
-                      fontSize: 24,
+                      fontSize: 22,
                       color: AppColors.black,
                     ),
                   ),
@@ -76,10 +92,10 @@ class ProfileView extends StatelessWidget {
                             color: controller.hasTypedGender ? Colors.black : Colors.grey,
                           ),
                           onChanged: controller.setGender,
-                          validator: controller.genderValidator,
+                          validator: genderValidator, // ✅ use local validator
                         ),
 
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 18),
 
                         CustomTextField(
                           labelText: 'Postal Code',
@@ -89,10 +105,10 @@ class ProfileView extends StatelessWidget {
                             'assets/images/postal.png',
                             width: 20,
                             height: 20,
-                          color: controller.hasTypedpostal ? Colors.black : Colors.grey,
+                            color: controller.hasTypedpostal ? Colors.black : Colors.grey,
                           ),
                           onChanged: controller.setPostal,
-                          validator: controller.phoneValidator,
+                          validator: phoneValidator, // ✅ use local validator
                         ),
                       ],
                     ),
@@ -113,9 +129,7 @@ class ProfileView extends StatelessWidget {
             ),
             child: CustomButton(
               title: 'Next',
-              onPressed: controller.onBottomNavigationScreen
-              //controller.goToVerification,
-
+              onPressed: controller.goTolocation,
             ),
           ),
         );

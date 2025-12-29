@@ -31,6 +31,10 @@ class StyleRefer {
     fontFamily: 'LexendRegular',
     fontSize: 13,
   );
+    static const TextStyle interSemiBold = TextStyle(
+    fontFamily: 'InterSemiBold',
+    fontSize: 16,
+  );
 
   // ===============================
   // BRAND / SPECIAL FONT
