@@ -9,7 +9,7 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48, // 🔹 fixed height for perfect circle
+      height: 48, 
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search for a product',

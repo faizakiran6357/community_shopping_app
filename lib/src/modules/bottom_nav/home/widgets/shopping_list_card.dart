@@ -19,7 +19,6 @@ class ShoppingListCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Welcome Row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -54,11 +53,9 @@ class ShoppingListCard extends StatelessWidget {
               color: AppColors.whiteColor.withOpacity(0.60),
               width: 1.0,
             ),
-            //color: Colors.white.withOpacity(0.10),
           ),
           child: Column(
             children: [
-              /// 🔹 Shopping Lists Row (LIGHTER COLOR)
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -155,7 +152,6 @@ class ShoppingListCard extends StatelessWidget {
                       ),
                     ),
 
-                    /// ✅ Plan (RIGHT CORNER)
                     Expanded(
                       flex: 2,
                       child: Text(
