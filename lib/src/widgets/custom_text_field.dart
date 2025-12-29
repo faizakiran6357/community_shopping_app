@@ -6,6 +6,7 @@ import '../utils/app_fonts.dart';
 class CustomTextField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
+  final String? initialValue;
   final bool isPassword;
   final TextInputType keyboardType;
 
@@ -14,16 +15,19 @@ class CustomTextField extends StatelessWidget {
 
   final ValueChanged<String>? onChanged;
   final String? Function(String?)? validator;
+  final VoidCallback? onTap;
 
   const CustomTextField({
     super.key,
     this.labelText,
     this.hintText,
+    this.initialValue,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.prefix,
     this.onChanged,
-    this.validator,  
+    this.validator,
+    this.onTap,
   });
 
   @override
@@ -32,11 +36,13 @@ class CustomTextField extends StatelessWidget {
       width: 372, // Figma width
       height: 70, // Figma height
       child: TextFormField(
+        initialValue: initialValue,
         obscureText: isPassword,
         keyboardType: keyboardType,
         style: StyleRefer.robotoMedium.copyWith(
           color: AppColors.black,
         ),
+        onTap: onTap,
         onChanged: onChanged,
         validator: validator,
         decoration: InputDecoration(

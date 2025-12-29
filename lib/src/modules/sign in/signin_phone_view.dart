@@ -38,7 +38,7 @@ class SignInPhoneView extends GetView<SignInLogic> {
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(
-                  fontSize: 24,
+                  fontSize: 22,
                   color: AppColors.black,
                 ),
               ),

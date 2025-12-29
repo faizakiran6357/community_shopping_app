@@ -62,7 +62,7 @@ class ProfileView extends StatelessWidget {
                   Text(
                     'Profile Setup',
                     style: StyleRefer.robotoSemiBold.copyWith(
-                      fontSize: 24,
+                      fontSize: 22,
                       color: AppColors.black,
                     ),
                   ),

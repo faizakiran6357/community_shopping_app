@@ -21,6 +21,10 @@ class AppColors {
 
   
    static const Color red = Colors.red;
+  static const Color lightred = Color(0xFFDF4A3C);
+  static const Color greyshade = Color(0xFFD4D4D4);
+  static const Color blueshade = Color(0xFF0040F7);
+
   // ===============================
   // BACKGROUND / SURFACE
   // ===============================

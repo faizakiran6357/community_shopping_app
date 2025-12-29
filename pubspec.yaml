@@ -17,6 +17,8 @@ dependencies:
   image_picker: ^1.2.1
   google_maps_flutter: ^2.14.0
   location: ^8.0.1
+  geocoding: ^3.0.0
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +44,7 @@ flutter:
     - assets/images/postal.png
     - assets/images/emailIcon.png
     - assets/images/locationIcon.png
-
+    - assets/images/arrowshape.png
   fonts:
     - family: RobotoBold
       fonts:
@@ -62,3 +64,6 @@ flutter:
     - family: LexendRegular
       fonts:
         - asset: assets/fonts/Lexend-Regular.ttf
+    - family: InterSemiBold
+      fonts:
+        - asset: assets/fonts/Inter_24pt-SemiBold.ttf

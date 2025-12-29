@@ -253,6 +253,7 @@ class LocationView extends StatelessWidget {
                       key: ValueKey(controller.locationText), // auto rebuild
                       labelText: 'Location',
                       hintText: 'Location',
+                      initialValue: controller.locationText,
                       prefix: Image.asset(
                         'assets/images/locationIcon.png',
                         width: 20,
@@ -272,7 +273,7 @@ class LocationView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       'Adjust your store Radius...',
-                      style: StyleRefer.robotoSemiBold.copyWith(
+                      style: StyleRefer.interSemiBold.copyWith(
                         fontSize: 16,
                         color: AppColors.black,
                       ),
@@ -294,7 +295,17 @@ class LocationView extends StatelessWidget {
                           ),
                           myLocationEnabled: true,
                           myLocationButtonEnabled: false,
+                          zoomControlsEnabled: false,
+                          mapToolbarEnabled: false,
                           onMapCreated: controller.onMapCreated,
+                          markers: controller.selectedLocation == null
+                              ? {}
+                              : {
+                                  Marker(
+                                    markerId: const MarkerId('currentLocation'),
+                                    position: controller.selectedLocation!,
+                                  ),
+                                },
                           circles: controller.selectedLocation == null
                               ? {}
                               : {
@@ -303,8 +314,8 @@ class LocationView extends StatelessWidget {
                                     center: controller.selectedLocation!,
                                     radius: controller.radius * 1000,
                                     fillColor:
-                                        const Color(0xFF0040F7).withOpacity(0.18),
-                                    strokeColor: const Color(0xFF0040F7),
+                                         AppColors.blueshade.withOpacity(0.18),
+                                    strokeColor:  AppColors.blueshade,
                                     strokeWidth: 2,
                                   ),
                                 },
@@ -317,10 +328,10 @@ class LocationView extends StatelessWidget {
                           right: 20,
                           child: SliderTheme(
                             data: SliderThemeData(
-                              activeTrackColor: const Color(0xFF0040F7),
-                              inactiveTrackColor: const Color(0xFFD4D4D4),
-                              thumbColor: const Color(0xFF0040F7),
-                              valueIndicatorColor: const Color(0xFF0040F7),
+                              activeTrackColor: AppColors.blueshade,
+                              inactiveTrackColor: AppColors.greyshade,
+                              thumbColor: AppColors.blueshade,
+                              valueIndicatorColor:AppColors.blueshade,
                             ),
                             child: Slider(
                               min: 1,
@@ -333,7 +344,7 @@ class LocationView extends StatelessWidget {
                           ),
                         ),
 
-                        /// CURRENT LOCATION BUTTON (BOTTOM LEFT) with custom arrow
+                        /// CURRENT LOCATION BUTTON (BOTTOM LEFT) with arrow asset
                         Positioned(
                           bottom: 12,
                           left: 20,
@@ -343,11 +354,16 @@ class LocationView extends StatelessWidget {
                               width: 50,
                               height: 50,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFDF4A3C),
+                                color:AppColors.lightred,
                                 shape: BoxShape.circle,
                               ),
-                              child: CustomPaint(
-                                painter: _ArrowPainter(),
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/arrowshape.png',
+                                  width: 24,
+                                  height: 24,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ),
@@ -376,24 +392,3 @@ class LocationView extends StatelessWidget {
   }
 }
 
-/// Custom Painter for the white arrow
-class _ArrowPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3
-      ..strokeCap = StrokeCap.round;
-
-    final path = Path();
-    path.moveTo(size.width * 0.25, size.height * 0.75); // bottom-left
-    path.lineTo(size.width * 0.5, size.height * 0.25); // top
-    path.lineTo(size.width * 0.75, size.height * 0.75); // bottom-right
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
