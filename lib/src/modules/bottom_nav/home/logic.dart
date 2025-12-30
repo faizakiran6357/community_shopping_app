@@ -27,12 +27,18 @@ class HomeLogic extends GetxController {
   }
 
   //dialog box
-  void openCreateListDialog() {
-    Get.dialog(
-      Dialog(
-        backgroundColor: AppColors.whiteColor,
-        insetPadding: EdgeInsets.symmetric(horizontal: 6.w),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.w)),
+void openCreateListDialog() {
+  Get.dialog(
+    Dialog(
+      backgroundColor: AppColors.whiteColor,
+      insetPadding: EdgeInsets.symmetric(horizontal: 6.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4.w),
+      ),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(Get.context!).viewInsets.bottom,
+        ),
         child: Padding(
           padding: EdgeInsets.all(5.w),
           child: Column(
@@ -41,10 +47,8 @@ class HomeLogic extends GetxController {
               /// 🔹 Title + Close icon
               Row(
                 children: [
-                  /// Empty space (left)
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
 
-                  /// Title (CENTER)
                   Expanded(
                     flex: 2,
                     child: Text(
@@ -58,7 +62,6 @@ class HomeLogic extends GetxController {
                     ),
                   ),
 
-                  /// Close icon (right)
                   Expanded(
                     child: Align(
                       alignment: Alignment.centerRight,
@@ -90,7 +93,6 @@ class HomeLogic extends GetxController {
                 onPressed: () {
                   if (listNameController.text.isNotEmpty) {
                     addList(listNameController.text);
-                    print('Create pressed');
                     Get.back();
                   }
                 },
@@ -99,7 +101,9 @@ class HomeLogic extends GetxController {
           ),
         ),
       ),
-      barrierDismissible: true,
-    );
-  }
+    ),
+    barrierDismissible: true,
+  );
+}
+
 }

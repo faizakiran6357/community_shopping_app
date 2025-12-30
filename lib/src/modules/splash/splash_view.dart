@@ -10,7 +10,6 @@ import 'splash_logic.dart';
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final SplashLogic logic = Get.put(SplashLogic());
@@ -22,71 +21,69 @@ class SplashView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const Spacer(),
+              /// 🔼 TOP SPACE
+              const Spacer(flex: 3),
 
-              // ===============================
-              // LOGO
-              // ===============================
-              Image.asset(
-                shopping,
-               width: 48.w,
-               height: 12.7.h,
-                fit: BoxFit.contain,
+              /// ===============================
+              /// CENTER CONTENT
+              /// ===============================
+              Column(
+                children: [
+                  Image.asset(
+                    shopping,
+                    width: 45.w, // 👈 thora balanced
+                    height: 14.h,
+                    fit: BoxFit.contain,
+                  ),
+
+                  0.5.h.height, // 👈 image & text spacing
+
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Community ',
+                          style: StyleRefer.roundKeySoftBold.copyWith(
+                            fontSize: 26.sp,
+                            letterSpacing: 0.4,
+                            color: AppColors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Shopping',
+                          style: StyleRefer.roundKeySoftBold.copyWith(
+                            fontSize: 26.sp,
+                            letterSpacing: 0.4,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
 
-              1.18.h.height,
+              /// 🔽 SPACE BETWEEN CENTER & BUTTONS
+              const Spacer(flex: 3),
 
+              /// ===============================
+              /// BUTTONS SECTION
+              /// ===============================
+              Column(
+                children: [
+                  CustomButton(title: 'Sign in', onPressed: logic.onSignIn),
 
-              // ===============================
-              // TITLE
-              // ===============================
-            
-               Text.rich(
-                      TextSpan(
-                          children: [
-                            TextSpan(
-                            text: 'Community ',
-                       style: StyleRefer.roundKeySoftBold.copyWith(
-                       fontSize: 26.sp,
-                       letterSpacing: 0.44, // 1%
-                      color: AppColors.black,
-                       ),
-                   ),
-            TextSpan(
-            text: 'Shopping',
-             style: StyleRefer.roundKeySoftBold.copyWith(
-             fontSize: 26.sp,
-             letterSpacing: 0.44, // 1%
-             color: AppColors.primary,
-             ),
-            ),
-         ],
-      ),
-    ),
+                  2.h.height,
 
-              const Spacer(),
+                  CustomButton(
+                    title: 'Sign up',
+                    type: ButtonType.outlined,
+                    onPressed: logic.onSignUp,
+                  ),
 
-              // ===============================
-              // SIGN IN BUTTON
-              // ===============================
-              CustomButton(
-                title: 'Sign in',
-                onPressed: logic.onSignIn,
+                  2.5.h.height, // bottom safe spacing
+                ],
               ),
-               1.9.h.height,
-
-
-              // ===============================
-              // SIGN UP BUTTON (WHITE)
-              // ===============================
-                CustomButton(
-                   title: 'Sign up',
-                   type: ButtonType.outlined,
-                   onPressed: logic.onSignUp,
-                ),
-
-               2.h.height
-
             ],
           ),
         ),

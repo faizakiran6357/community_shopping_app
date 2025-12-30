@@ -1,3 +1,6 @@
+import 'package:community_shopping_app/src/utils/app_colors.dart';
+import 'package:community_shopping_app/src/utils/app_fonts.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'logic.dart';
@@ -7,6 +10,9 @@ class AppSearchDelegate extends SearchDelegate<String> {
 
   @override
   String get searchFieldLabel => 'Search';
+   @override
+  TextStyle get searchFieldStyle =>
+      const TextStyle(fontSize: 14, color: Colors.black);
 
   /// 🌈 APP BAR THEME (Rounded search bar)
   @override
@@ -21,7 +27,7 @@ class AppSearchDelegate extends SearchDelegate<String> {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.grey.shade100,
+        fillColor: AppColors.black.withOpacity(0.04),
         hintStyle: const TextStyle(color: Colors.grey),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 14,
@@ -83,18 +89,23 @@ class AppSearchDelegate extends SearchDelegate<String> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                 Text(
                   'Last search',
-                  style: TextStyle(fontWeight: FontWeight.w600),
+                 style: StyleRefer.robotoRegular.copyWith(
+                  fontSize: 12.sp,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w400,
+                ),
                 ),
                 GestureDetector(
                   onTap: logic.clearAll,
-                  child: const Text(
+                  child:  Text(
                     'Clear all',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 12,
-                    ),
+                   style: StyleRefer.robotoRegular.copyWith(
+                  fontSize: 12.sp,
+                  color: AppColors.redColor,
+                  fontWeight: FontWeight.w400,
+                ),
                   ),
                 ),
               ],
@@ -110,10 +121,14 @@ class AppSearchDelegate extends SearchDelegate<String> {
                       itemBuilder: (context, index) {
                         final item = logic.recentSearches[index];
                         return ListTile(
-                          leading: const Icon(Icons.history),
-                          title: Text(item),
+                          leading: const Icon(Icons.history,color:  AppColors.lastSearch,),
+                          title: Text(item, style: StyleRefer.robotoRegular.copyWith(
+                  fontSize: 12.sp,
+                  color: AppColors.lastSearch,
+                  fontWeight: FontWeight.w400,
+                ),),
                           trailing: IconButton(
-                            icon: const Icon(Icons.close, size: 18),
+                            icon: const Icon(Icons.close, size: 18,color:  AppColors.lastSearch,),
                             onPressed: () => logic.removeSearch(item),
                           ),
                           onTap: () {
