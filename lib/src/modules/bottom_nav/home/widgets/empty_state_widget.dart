@@ -10,7 +10,9 @@ class EmptyStateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children:  [
-        Image(image: AssetImage(emptyListIcon),width: 109,height: 130,),
+        Image(image: AssetImage(emptyListIcon),
+        width: 109,
+        height: 130,),
       
         SizedBox(height: 12),
         Text('No items yet!', style: StyleRefer.robotoRegular.copyWith(
