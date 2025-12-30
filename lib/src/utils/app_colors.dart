@@ -25,7 +25,7 @@ class AppColors {
   static const Color greyshade = Color(0xFFD4D4D4);
   static const Color blueshade = Color(0xFF0040F7);
   static const Color whiteColor = Color(0xFFFFFFFF);
-
+ static const Color dividerColor = Color(0xFFEAEAEA);
   // ===============================
   // BACKGROUND / SURFACE
   // ===============================

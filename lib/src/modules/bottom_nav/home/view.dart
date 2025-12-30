@@ -16,16 +16,18 @@ class HomeView extends StatelessWidget {
         return Obx(() {
           return Scaffold(
             body: Column(
-            
               children: [
                 HomeAppBar(
                   userName: logic.userName.value,
-                  onAdd: logic.onAddList,
+                  onAdd: logic.openCreateListDialog,
                   onSeeAll: logic.onSeeAll,
                 ),
                 12.h.height,
-               
-                EmptyStateWidget()
+
+                if (logic.shoppingLists.isEmpty)
+                  EmptyStateWidget()
+                else
+                  const SizedBox(),
               ],
             ),
           );
