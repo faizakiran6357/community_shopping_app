@@ -10,9 +10,10 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final TextInputType keyboardType;
 
-  /// ANY widget: Icon, Image, CircleAvatar etc
-  final Widget? prefix;
+  /// 👇 NEW
+  final Color textColor;
 
+  final Widget? prefix;
   final ValueChanged<String>? onChanged;
   final String? Function(String?)? validator;
   final VoidCallback? onTap;
@@ -28,20 +29,26 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.onTap,
+
+    /// 👇 DEFAULT color (fallback)
+    this.textColor = AppColors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 372, // Figma width
-      height: 70, // Figma height
+      width: 372,   // later isko bhi sizer se replace kar sakti hain
+      height: 70,
       child: TextFormField(
         initialValue: initialValue,
         obscureText: isPassword,
         keyboardType: keyboardType,
+
+        /// ✅ USER ENTERED TEXT COLOR
         style: StyleRefer.robotoMedium.copyWith(
-          color: AppColors.black,
+          color: textColor,
         ),
+
         onTap: onTap,
         onChanged: onChanged,
         validator: validator,
@@ -51,48 +58,23 @@ class CustomTextField extends StatelessWidget {
           labelStyle: StyleRefer.robotoRegular.copyWith(
             color: AppColors.hintGrey,
           ),
-
-          helperText: ' ',
-          helperStyle: const TextStyle(height: 0.8),
-          errorStyle: const TextStyle(
-            height: 1,
-            fontSize: 12,
-          ),
-
-          /// PREFIX
-          prefixIcon: prefix != null
-              ? Padding(
-                  padding: const EdgeInsets.only(left: 12, right: 8),
-                  child: prefix,
-                )
-              : null,
-
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 40,
-            minHeight: 40,
-          ),
-
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
 
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.lightgrey, width: 1),
+            borderSide:
+                const BorderSide(color: AppColors.lightgrey, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color:AppColors.lightgrey,  width: 1),
+            borderSide:
+                const BorderSide(color: AppColors.lightgrey, width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.lightgrey, width: 1),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.red, width: 1),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.red, width: 1),
+            borderSide:
+                const BorderSide(color: AppColors.lightgrey, width: 1),
           ),
         ),
       ),

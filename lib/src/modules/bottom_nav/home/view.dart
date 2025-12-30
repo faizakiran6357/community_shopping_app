@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'logic.dart';
@@ -18,11 +19,15 @@ class HomeView extends StatelessWidget {
               children: [
                 HomeAppBar(
                   userName: logic.userName.value,
-                  onAdd: logic.onAddList,
+                  onAdd: logic.openCreateListDialog,
                   onSeeAll: logic.onSeeAll,
                 ),
-                 const SizedBox(height: 170),
-                EmptyStateWidget()
+                12.h.height,
+
+                if (logic.shoppingLists.isEmpty)
+                  EmptyStateWidget()
+                else
+                  const SizedBox(),
               ],
             ),
           );

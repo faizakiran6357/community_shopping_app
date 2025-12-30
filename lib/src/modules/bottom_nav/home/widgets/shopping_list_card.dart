@@ -1,33 +1,38 @@
+import 'package:community_shopping_app/src/modules/bottom_nav/home/logic.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ShoppingListCard extends StatelessWidget {
   final String userName;
   final VoidCallback onAdd;
   final VoidCallback onSeeAll;
 
-  const ShoppingListCard({
+  ShoppingListCard({
     super.key,
     required this.userName,
     required this.onAdd,
     required this.onSeeAll,
   });
 
+  final HomeLogic controller = Get.find<HomeLogic>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        /// 🔹 Top Row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Welcome $userName!',
               style: StyleRefer.robotoSemiBold.copyWith(
-                fontSize: 16,
+                fontSize: 14.sp,
                 color: AppColors.whiteColor,
-                fontWeight: FontWeight.w600,
               ),
             ),
             GestureDetector(
@@ -35,38 +40,34 @@ class ShoppingListCard extends StatelessWidget {
               child: Text(
                 'See all',
                 style: StyleRefer.robotoSemiBold.copyWith(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   color: AppColors.whiteColor,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 12),
 
-        /// Card
+        2.h.height,
+
+        /// 🔹 Main Card
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(4.w),
             border: Border.all(
-              color: AppColors.whiteColor.withOpacity(0.60),
-              width: 1.0,
+              color: AppColors.whiteColor.withOpacity(0.6),
+              width: 0.2.w,
             ),
           ),
           child: Column(
             children: [
+              /// 🔹 Header
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.8.h),
                 decoration: BoxDecoration(
-                  color: AppColors.whiteColor.withOpacity(
-                    0.25,
-                  ), // lighter shade
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(18),
+                  color: AppColors.whiteColor.withOpacity(0.25),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(4.w),
                   ),
                 ),
                 child: Row(
@@ -75,102 +76,123 @@ class ShoppingListCard extends StatelessWidget {
                     Text(
                       'Shopping Lists',
                       style: StyleRefer.robotoMedium.copyWith(
-                        fontSize: 16,
+                        fontSize: 14.sp,
                         color: AppColors.whiteColor,
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     CircleAvatar(
-                      radius: 13,
+                      radius: 3.5.w,
                       backgroundColor: Colors.white,
                       child: IconButton(
                         padding: EdgeInsets.zero,
                         onPressed: onAdd,
-                        icon: const Icon(
-                          Icons.add,
-                          size: 18,
-                          color: Colors.blue,
-                        ),
+                        icon: Icon(Icons.add, size: 4.w, color: Colors.blue),
                       ),
                     ),
                   ],
                 ),
               ),
 
-              /// 🔹 Table Header Row (DARKER COLOR)
+              /// 🔹 Table Header
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.black.withOpacity(0.25), // darker shade
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(18),
-                  ),
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.2.h),
+                color: AppColors.black.withOpacity(0.25),
                 child: Row(
                   children: [
-                    /// Name (left aligned, wide)
-                    Expanded(
-                      flex: 8,
-                      child: Text(
-                        'Name',
-                        style: StyleRefer.robotoMedium.copyWith(
-                          fontSize: 12,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-
-                    /// Items (center)
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        'Items',
-                        //textAlign: TextAlign.center,
-                        style: StyleRefer.robotoMedium.copyWith(
-                          fontSize: 12,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-
-                    /// Stores (center)
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        'Stores',
-                        textAlign: TextAlign.center,
-                        style: StyleRefer.robotoMedium.copyWith(
-                          fontSize: 12,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        'Plan',
-                        textAlign: TextAlign.right,
-                        style: StyleRefer.robotoMedium.copyWith(
-                          fontSize: 12,
-                          color: AppColors.whiteColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
+                    _headerText('Name', 6),
+                    _headerText('Items', 2),
+                    _headerText('Stores', 2, center: true),
+                    _headerText('Plan', 2, end: true),
                   ],
                 ),
               ),
+
+              /// 🔹 List Items
+              Obx(() {
+                final lists = controller.shoppingLists.take(3).toList();
+
+                return Column(
+                  children: List.generate(lists.length, (index) {
+                    final list = lists[index];
+
+                    return Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 4.w,
+                            vertical: 1.5.h,
+                          ),
+                          color: AppColors.whiteColor.withOpacity(0.15),
+                          child: Row(
+                            children: [
+                              _rowText(list.name, 6),
+                              _rowText(list.items.toString(), 2),
+                              _rowText(list.stores.toString(), 2, center: true),
+                              Expanded(
+                                flex: 2,
+                                child: Icon(
+                                  Icons.description_outlined,
+                                  size: 4.w,
+                                  color: AppColors.whiteColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        /// 🔹 Divider (NOT after last item)
+                        if (index != lists.length - 1)
+                          Divider(
+                            color: AppColors.dividerColor,
+                            thickness: 0.15.h,
+                            height: 0.2.h,
+                          ),
+                      ],
+                    );
+                  }),
+                );
+              }),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _headerText(
+    String text,
+    int flex, {
+    bool center = false,
+    bool end = false,
+  }) {
+    return Expanded(
+      flex: flex,
+      child: Text(
+        text,
+        textAlign: center
+            ? TextAlign.center
+            : end
+            ? TextAlign.right
+            : TextAlign.left,
+        style: StyleRefer.robotoMedium.copyWith(
+          fontSize: 11.sp,
+          color: AppColors.whiteColor,
+        ),
+      ),
+    );
+  }
+
+  Widget _rowText(String text, int flex, {bool center = false}) {
+    return Expanded(
+      flex: flex,
+      child: Text(
+        text,
+        textAlign: center ? TextAlign.center : TextAlign.left,
+        style: StyleRefer.robotoRegular.copyWith(
+          fontSize: 11.sp,
+          color: AppColors.whiteColor,
+        ),
+      ),
     );
   }
 }
