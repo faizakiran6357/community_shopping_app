@@ -35,7 +35,7 @@ class SignInEmailView extends GetView<SignInLogic> {
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(
-                  fontSize: 15.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.black,
                 ),

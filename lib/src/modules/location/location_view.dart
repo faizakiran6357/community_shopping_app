@@ -264,7 +264,7 @@ class LocationView extends StatelessWidget {
                       Text(
                         'Location',
                         style: StyleRefer.robotoSemiBold.copyWith(
-                          fontSize: 16.sp,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                           color: AppColors.black,
                         ),

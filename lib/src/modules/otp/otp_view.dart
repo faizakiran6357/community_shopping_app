@@ -308,7 +308,7 @@ class OtpView extends GetView<OtpLogic> {
                 Text(
                   'Enter OTP',
                   style: StyleRefer.robotoSemiBold.copyWith(
-                    fontSize: 16.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.black,
                   ),

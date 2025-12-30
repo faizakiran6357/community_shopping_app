@@ -124,7 +124,7 @@ class VerificationView extends GetView<VerificationLogic> {
                 Text(
                   'Verification Method',
                   style: StyleRefer.robotoSemiBold.copyWith(
-                    fontSize: 15.sp,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.black,
                   ),
