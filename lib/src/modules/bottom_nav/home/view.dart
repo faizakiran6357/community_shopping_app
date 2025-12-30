@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class HomeView extends StatelessWidget {
       builder: (logic) {
         return Obx(() {
           return Scaffold(
+            backgroundColor: AppColors.white,
             body: Column(
               children: [
                 HomeAppBar(
