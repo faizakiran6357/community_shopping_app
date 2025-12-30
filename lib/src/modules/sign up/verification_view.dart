@@ -1,3 +1,97 @@
+// import 'package:community_shopping_app/src/utils/sizer.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import '../../utils/app_colors.dart';
+// import '../../utils/app_fonts.dart';
+// import '../../utils/app_strings.dart';
+// import '../../widgets/auth_logo_title.dart';
+// import '../../widgets/auth_footer_text.dart';
+// import '../../widgets/custom_button.dart';
+// import '../../widgets/selection_tile.dart';
+// import 'verification_logic.dart';
+
+// class VerificationView extends GetView<VerificationLogic> {
+//   const VerificationView({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.white,
+//       body: SafeArea(
+//         child: Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 20),
+//           child: GetBuilder<VerificationLogic>(
+//             builder: (controller) => Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 4.h.height,
+//                 const Center(child: AuthLogoTitle()),
+
+//                 3.2.h.height,
+//                 Text(
+//                   'Verification Method',
+//                   style: StyleRefer.robotoSemiBold.copyWith(
+//                     fontSize: 15.sp,
+//                     fontWeight: FontWeight.w600,
+//                     color: AppColors.black,
+//                   ),
+//                 ),
+
+//                 0.6.h.height,
+//                 Text(
+//                   AppStrings.otpSelectionSubtitle,
+//                   style: StyleRefer.robotoRegular.copyWith(
+//                     color: AppColors.grey,
+//                   ),
+//                 ),
+
+//                 5.h.height,
+
+//                 SelectionTile(
+//                   icon: 'assets/images/phone.png',
+//                   title: 'Via Phone Number',
+//                   isSelected: controller.viaPhone,
+//                   onTap: controller.selectPhone,
+//                 ),
+
+//                 1.6.h.height,
+
+//                 SelectionTile(
+//                   icon: 'assets/images/email.png',
+//                   title: 'Via Email',
+//                   isSelected: controller.viaEmail,
+//                   onTap: controller.selectEmail,
+//                 ),
+
+//                 6.h.height,
+
+//                 CustomButton(
+//                   title: 'Next',
+//                   onPressed: controller.goToOtp,
+//                 ),
+
+//                 1.8.h.height,
+
+//                 Center(
+//                   child: AuthFooterText(
+//                     fullText: AppStrings.dontHaveAccountsignin, // 👈 change here
+//                     actionText: 'Sign In',
+//                     onTap: controller.onSignIn,
+//                   ),
+//                 ),
+
+//                 2.h.height,
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
@@ -17,25 +111,26 @@ class VerificationView extends GetView<VerificationLogic> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: GetBuilder<VerificationLogic>(
-            builder: (controller) => Column(
+        child: GetBuilder<VerificationLogic>(
+          builder: (controller) => SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 5.5.w, vertical: 2.h),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                4.h.height,
                 const Center(child: AuthLogoTitle()),
 
-                const SizedBox(height: 32),
+                3.2.h.height,
                 Text(
                   'Verification Method',
                   style: StyleRefer.robotoSemiBold.copyWith(
-                    fontSize: 22,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w600,
                     color: AppColors.black,
                   ),
                 ),
 
-                const SizedBox(height: 6),
+                0.6.h.height,
                 Text(
                   AppStrings.otpSelectionSubtitle,
                   style: StyleRefer.robotoRegular.copyWith(
@@ -43,39 +138,44 @@ class VerificationView extends GetView<VerificationLogic> {
                   ),
                 ),
 
-                const SizedBox(height: 36),
+                5.h.height,
 
+                // Via Phone
                 SelectionTile(
-                  icon: 'assets/images/phone.png',
+                  icon: phone,
                   title: 'Via Phone Number',
-                  isSelected: controller.viaPhone,
+                  isSelected: controller.isPhoneSelected,
                   onTap: controller.selectPhone,
                 ),
-                const SizedBox(height: 16),
 
+                1.6.h.height,
+
+                // Via Email
                 SelectionTile(
-                  icon: 'assets/images/email.png',
+                  icon: email,
                   title: 'Via Email',
-                  isSelected: controller.viaEmail,
+                  isSelected: controller.isEmailSelected,
                   onTap: controller.selectEmail,
                 ),
 
-              SizedBox(height: 40,),
+                6.h.height,
 
                 CustomButton(
                   title: 'Next',
-                  onPressed: controller.goToOtp,
+                  onPressed: controller.goNext,
                 ),
 
-                const SizedBox(height: 18),
+                1.8.h.height,
+
                 Center(
                   child: AuthFooterText(
-                    fullText: AppStrings.alreadyHaveAccount,
+                    fullText: AppStrings.dontHaveAccountsignin,
                     actionText: 'Sign In',
-                    onTap: () => controller.onSignIn(),
+                    onTap: controller.onSignIn,
                   ),
                 ),
-                const SizedBox(height: 20),
+
+                2.h.height,
               ],
             ),
           ),

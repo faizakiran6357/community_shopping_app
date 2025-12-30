@@ -10,6 +10,9 @@ class AppStrings {
 
   static const String dontHaveAccount =
       "Don’t have an account? Sign Up";
+  
+   static const String dontHaveAccountsignin =
+      "Don’t have an account? Sign In";
 
       
   static const String alreadyHaveAccount =
@@ -26,6 +29,7 @@ class AppStrings {
 
   static const String otpSentMessage =
       "A 6 digit OTP has been sent to";
+         static const String adjustradius = 'Adjust your store Radius...';
 
 
       // ERROR Strings//

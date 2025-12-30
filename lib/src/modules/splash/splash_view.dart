@@ -1,3 +1,5 @@
+import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/custom_button.dart';
@@ -26,13 +28,14 @@ class SplashView extends StatelessWidget {
               // LOGO
               // ===============================
               Image.asset(
-                'assets/images/shopping_icon.png',
-                width: 187,
-                height: 107,
+                shopping,
+               width: 48.w,
+               height: 12.7.h,
                 fit: BoxFit.contain,
               ),
 
-              const SizedBox(height: 20),
+              1.18.h.height,
+
 
               // ===============================
               // TITLE
@@ -44,7 +47,7 @@ class SplashView extends StatelessWidget {
                             TextSpan(
                             text: 'Community ',
                        style: StyleRefer.roundKeySoftBold.copyWith(
-                       fontSize: 34,
+                       fontSize: 26.sp,
                        letterSpacing: 0.44, // 1%
                       color: AppColors.black,
                        ),
@@ -52,7 +55,7 @@ class SplashView extends StatelessWidget {
             TextSpan(
             text: 'Shopping',
              style: StyleRefer.roundKeySoftBold.copyWith(
-             fontSize: 34,
+             fontSize: 26.sp,
              letterSpacing: 0.44, // 1%
              color: AppColors.primary,
              ),
@@ -70,8 +73,8 @@ class SplashView extends StatelessWidget {
                 title: 'Sign in',
                 onPressed: logic.onSignIn,
               ),
+               1.9.h.height,
 
-              const SizedBox(height: 16),
 
               // ===============================
               // SIGN UP BUTTON (WHITE)
@@ -82,7 +85,8 @@ class SplashView extends StatelessWidget {
                    onPressed: logic.onSignUp,
                 ),
 
-              const SizedBox(height: 20),
+               2.h.height
+
             ],
           ),
         ),

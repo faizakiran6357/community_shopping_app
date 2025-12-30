@@ -1,3 +1,5 @@
+import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_fonts.dart';
@@ -12,13 +14,15 @@ class AuthLogoTitle extends StatelessWidget {
         // ===============================
         // LOGO
         // ===============================
-        Image.asset(
-          'assets/images/shopping_icon.png',
-          width: 139.82, 
-          height: 80.02,
-          fit: BoxFit.contain,
-        ),
-        const SizedBox(height: 12),
+             Image.asset(
+            shopping,
+             width: 38.8.w,
+             height: 10.h,
+             fit: BoxFit.contain,
+            ),
+
+         1.2.h.height,
+
         // ===============================
         // APP TITLE
         // ===============================
@@ -28,14 +32,14 @@ class AuthLogoTitle extends StatelessWidget {
       TextSpan(
         text: 'Community ',
         style: StyleRefer.roundKeySoftBold.copyWith(
-          fontSize: 28,
+          fontSize: 20.sp,
           color: AppColors.black,
         ),
       ),
       TextSpan(
         text: 'Shopping',
         style: StyleRefer.roundKeySoftBold.copyWith(
-          fontSize: 28,
+          fontSize: 20.sp,
           color: AppColors.primary,
         ),
       ),

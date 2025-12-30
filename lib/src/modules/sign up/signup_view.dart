@@ -1,10 +1,11 @@
 
 import 'package:community_shopping_app/src/modules/sign%20in/signin%20_view.dart';
+import 'package:community_shopping_app/src/utils/app_images.dart';
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../utils/app_colors.dart';
 import '../../utils/app_fonts.dart';
 import '../../utils/app_strings.dart';
@@ -34,19 +35,20 @@ class SignUpView extends GetView<SignUpLogic> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 40),
+                   6.h.height,
                   const Center(child: AuthLogoTitle()),
 
-                  const SizedBox(height: 32),
+                 
+                   4.h.height,
                   Text(
                     'Sign up',
                     style: StyleRefer.robotoSemiBold.copyWith(
-                      fontSize: 22,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
                       color: AppColors.black,
                     ),
                   ),
-
-                  const SizedBox(height: 6),
+                   1.h.height,
                   Text(
                     AppStrings.completeProfileTitle,
                     style: StyleRefer.robotoRegular.copyWith(
@@ -54,7 +56,7 @@ class SignUpView extends GetView<SignUpLogic> {
                     ),
                   ),
 
-                  const SizedBox(height: 24),
+                   3.h.height,
 
                   /// PROFILE IMAGE
                   Center(
@@ -71,7 +73,7 @@ class SignUpView extends GetView<SignUpLogic> {
                             child: c.profileImage == null
                                 ? ClipOval(
                                     child: Image.asset(
-                                      'assets/images/person.png',
+                                      person,
                                       width: 48.98,
                                       height: 48.98,
                                       fit: BoxFit.cover,
@@ -94,7 +96,7 @@ class SignUpView extends GetView<SignUpLogic> {
                               radius: 16.835,
                               backgroundColor: AppColors.whitegrey,
                               child: Image.asset(
-                                'assets/images/edit.png',
+                                edit,
                                 width: 18,
                                 height: 18,
                                 fit: BoxFit.contain,
@@ -105,8 +107,7 @@ class SignUpView extends GetView<SignUpLogic> {
                       ],
                     ),
                   ),
-
-                  const SizedBox(height: 32),
+                   4.h.height,
 
                   // ================= FORM START =================
                   Form(
@@ -117,7 +118,7 @@ class SignUpView extends GetView<SignUpLogic> {
                           labelText: 'First name',
                           hintText: 'Enter first name',
                           prefix: Image.asset(
-                            'assets/images/personIcon.png',
+                           personIcon,
                             width: 20,
                             height: 20,
                             color: controller.hasTypedFirstName
@@ -133,12 +134,12 @@ class SignUpView extends GetView<SignUpLogic> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 16),
+                        2.h.height,
                         CustomTextField(
                           labelText: 'Last name',
                           hintText: 'Enter last name',
                           prefix: Image.asset(
-                            'assets/images/personIcon.png',
+                           personIcon,
                             width: 20,
                             height: 20,
                             color: controller.hasTypedLastName
@@ -153,13 +154,13 @@ class SignUpView extends GetView<SignUpLogic> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 16),
+                         2.h.height,
                         CustomTextField(
                           labelText: 'Email',
                           hintText: 'Enter email',
                           keyboardType: TextInputType.emailAddress,
                           prefix: Image.asset(
-                            'assets/images/emailIcon.png',
+                            emailIcon,
                             width: 20,
                             height: 20,
                             color: controller.hasTypedEmail
@@ -177,7 +178,7 @@ class SignUpView extends GetView<SignUpLogic> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 16),
+                        2.h.height,
                         GetBuilder<SignUpLogic>(
                           builder: (_) {
                             return CustomTextField(
@@ -212,7 +213,7 @@ class SignUpView extends GetView<SignUpLogic> {
                                         style: const TextStyle(fontSize: 20),
                                       ),
                                       const Icon(Icons.arrow_drop_down),
-                                      const SizedBox(width: 6),
+                                       1.w.width,
                                       const Text(
                                         '|',
                                         style: TextStyle(
@@ -220,7 +221,7 @@ class SignUpView extends GetView<SignUpLogic> {
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      const SizedBox(width: 6),
+                                       1.w.width,
                                     ],
                                   ),
                                 ),
@@ -228,7 +229,7 @@ class SignUpView extends GetView<SignUpLogic> {
                             );
                           },
                         ),
-                        const SizedBox(height: 32),
+                      4.h.height,
                         CustomButton(
                           title: 'Sign up',
                           onPressed: () {
@@ -241,7 +242,7 @@ class SignUpView extends GetView<SignUpLogic> {
                   ),
                   // ================= FORM END =================
 
-                  const SizedBox(height: 16),
+                   2.h.height,
                   Center(
                     child: AuthFooterText(
                       fullText: AppStrings.alreadyHaveAccount,
@@ -251,7 +252,7 @@ class SignUpView extends GetView<SignUpLogic> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                   3.h.height,
                 ],
               ),
             ),
