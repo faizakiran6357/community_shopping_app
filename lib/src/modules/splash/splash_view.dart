@@ -21,57 +21,61 @@ class SplashView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              /// 🔼 TOP SPACE
-              const Spacer(flex: 3),
 
               /// ===============================
-              /// CENTER CONTENT
+              /// CENTER CONTENT (STABLE)
               /// ===============================
-              Column(
-                children: [
-                  Image.asset(
-                    shopping,
-                    width: 45.w, // 👈 thora balanced
-                    height: 14.h,
-                    fit: BoxFit.contain,
-                  ),
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        shopping,
+                        width: 45.w, // ✅ ONLY WIDTH
+                        fit: BoxFit.contain,
+                      ),
 
-                  0.5.h.height, // 👈 image & text spacing
+                      1.h.height,
 
-                  Text.rich(
-                    TextSpan(
-                      children: [
+                      Text.rich(
                         TextSpan(
-                          text: 'Community ',
-                          style: StyleRefer.roundKeySoftBold.copyWith(
-                            fontSize: 26.sp,
-                            letterSpacing: 0.4,
-                            color: AppColors.black,
-                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Community ',
+                              style: StyleRefer.roundKeySoftBold.copyWith(
+                                fontSize: 26.sp,
+                                letterSpacing: 0.4,
+                                color: AppColors.black,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Shopping',
+                              style: StyleRefer.roundKeySoftBold.copyWith(
+                                fontSize: 26.sp,
+                                letterSpacing: 0.4,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                          ],
                         ),
-                        TextSpan(
-                          text: 'Shopping',
-                          style: StyleRefer.roundKeySoftBold.copyWith(
-                            fontSize: 26.sp,
-                            letterSpacing: 0.4,
-                            color: AppColors.primary,
-                          ),
-                        ),
-                      ],
-                    ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
 
-              /// 🔽 SPACE BETWEEN CENTER & BUTTONS
-              const Spacer(flex: 3),
-
               /// ===============================
-              /// BUTTONS SECTION
+              /// BUTTONS (NO OVERLAP)
               /// ===============================
               Column(
                 children: [
-                  CustomButton(title: 'Sign in', onPressed: logic.onSignIn),
+                  CustomButton(
+                    title: 'Sign in',
+                    onPressed: logic.onSignIn,
+                  ),
 
                   2.h.height,
 
@@ -81,7 +85,7 @@ class SplashView extends StatelessWidget {
                     onPressed: logic.onSignUp,
                   ),
 
-                  2.5.h.height, // bottom safe spacing
+                  2.5.h.height,
                 ],
               ),
             ],

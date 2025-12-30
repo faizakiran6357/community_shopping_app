@@ -40,14 +40,14 @@ class AuthFooterText extends StatelessWidget {
           TextSpan(
             text: beforeText,
             style: StyleRefer.robotoMedium.copyWith(
-              fontSize: 14.sp,
+              fontSize: 13.sp,
               color: AppColors.lightGrey,
             ),
           ),
           TextSpan(
             text: clickableText,
             style: StyleRefer.robotoMedium.copyWith(
-              fontSize: 14.sp,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w500,
               color: AppColors.signUpBlue,
             ),
