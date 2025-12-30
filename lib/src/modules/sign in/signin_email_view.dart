@@ -1,10 +1,11 @@
-
+import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../modules/sign in/signin_logic.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_fonts.dart';
 import '../../utils/app_strings.dart';
+import '../../utils/sizer.dart';
 import '../../widgets/auth_logo_title.dart';
 import '../../widgets/auth_footer_text.dart';
 import '../../widgets/custom_button.dart';
@@ -13,44 +14,42 @@ import '../../widgets/custom_text_field.dart';
 class SignInEmailView extends GetView<SignInLogic> {
   SignInEmailView({super.key});
 
-
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final double topPadding = MediaQuery.of(context).size.height * 0.06;
-
     return Scaffold(
       backgroundColor: AppColors.white,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 5.5.w), // responsive padding
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: topPadding),
+              6.h.height, // top padding
               const Center(child: AuthLogoTitle()),
-              const SizedBox(height: 32),
-                        
+              4.h.height, // spacing
+
+              // TITLE
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(
-                  fontSize: 22,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w600,
                   color: AppColors.black,
                 ),
               ),
+              0.75.h.height, // spacing
 
-              const SizedBox(height: 6),
-
+              // SUBTITLE
               Text(
                 AppStrings.loginSubtitle,
                 style: StyleRefer.robotoRegular.copyWith(
                   color: AppColors.grey,
                 ),
               ),
-
-              const SizedBox(height: 32),
+              4.h.height, // spacing
 
               // ================= FORM START =================
               Form(
@@ -66,9 +65,9 @@ class SignInEmailView extends GetView<SignInLogic> {
                           hintText: 'Enter email',
                           keyboardType: TextInputType.emailAddress,
                           prefix: Image.asset(
-                            'assets/images/emailIcon.png',
-                            width: 20,
-                            height: 20,
+                            emailIcon,
+                            width: 5.w,   // responsive width
+                            height: 2.5.h, // responsive height
                             color: controller.hasTypedEmail
                                 ? Colors.black
                                 : Colors.grey,
@@ -82,7 +81,7 @@ class SignInEmailView extends GetView<SignInLogic> {
                               return AppStrings.email;
                             }
                             if (!value.contains('@')) {
-                             return AppStrings.validemail;
+                              return AppStrings.validemail;
                             }
                             return null;
                           },
@@ -90,7 +89,7 @@ class SignInEmailView extends GetView<SignInLogic> {
                       },
                     ),
 
-                    const SizedBox(height: 40),
+                    4.5.h.height, // spacing
 
                     CustomButton(
                       title: 'Next',
@@ -104,8 +103,9 @@ class SignInEmailView extends GetView<SignInLogic> {
               ),
               // ================= FORM END =================
 
-              const SizedBox(height: 18),
+              2.h.height, // spacing
 
+              // FOOTER TEXT
               Center(
                 child: AuthFooterText(
                   fullText: AppStrings.dontHaveAccount,
@@ -114,7 +114,7 @@ class SignInEmailView extends GetView<SignInLogic> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              2.5.h.height, // bottom spacing
             ],
           ),
         ),

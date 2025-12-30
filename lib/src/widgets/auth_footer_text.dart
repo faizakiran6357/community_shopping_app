@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import '../utils/app_colors.dart';
@@ -24,7 +25,7 @@ class AuthFooterText extends StatelessWidget {
       return Text(
         fullText,
         style: StyleRefer.robotoMedium.copyWith(
-          fontSize: 14,
+          fontSize: 10.sp,
           color: AppColors.lightGrey,
         ),
       );
@@ -39,14 +40,15 @@ class AuthFooterText extends StatelessWidget {
           TextSpan(
             text: beforeText,
             style: StyleRefer.robotoMedium.copyWith(
-              fontSize: 18,
+              fontSize: 14.sp,
               color: AppColors.lightGrey,
             ),
           ),
           TextSpan(
             text: clickableText,
             style: StyleRefer.robotoMedium.copyWith(
-              fontSize: 18,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
               color: AppColors.signUpBlue,
             ),
             recognizer: TapGestureRecognizer()..onTap = onTap,
