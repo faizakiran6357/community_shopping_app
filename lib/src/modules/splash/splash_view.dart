@@ -21,7 +21,7 @@ class SplashView extends StatelessWidget {
             children: [
 
               /// ===============================
-              /// CENTER CONTENT
+              /// CENTER CONTENT (STABLE)
               /// ===============================
               Align(
                 alignment: Alignment.center,

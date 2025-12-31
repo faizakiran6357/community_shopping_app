@@ -159,7 +159,6 @@ import 'package:community_shopping_app/src/modules/sign%20up/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:country_picker/country_picker.dart';
-
 import '../../modules/sign in/signin_logic.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_fonts.dart';
@@ -194,7 +193,7 @@ class SignInPhoneView extends GetView<SignInLogic> {
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(
-                  fontSize: 15.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.black,
                 ),
