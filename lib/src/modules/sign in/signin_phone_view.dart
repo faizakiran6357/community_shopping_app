@@ -155,6 +155,10 @@
 //     );
 //   }
 // }
+
+
+
+
 import 'package:community_shopping_app/src/modules/sign%20up/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -168,7 +172,6 @@ import '../../widgets/auth_logo_title.dart';
 import '../../widgets/auth_footer_text.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
-
 class SignInPhoneView extends GetView<SignInLogic> {
   SignInPhoneView({super.key});
 
@@ -181,15 +184,15 @@ class SignInPhoneView extends GetView<SignInLogic> {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 5.5.w), // responsive padding
+          padding: EdgeInsets.symmetric(horizontal: 5.5.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              6.h.height, // top padding
+              6.h.height,
               const Center(child: AuthLogoTitle()),
-              4.h.height, // spacing
+              4.h.height,
 
-              // TITLE
+              /// TITLE
               Text(
                 'Log In',
                 style: StyleRefer.robotoSemiBold.copyWith(
@@ -198,18 +201,18 @@ class SignInPhoneView extends GetView<SignInLogic> {
                   color: AppColors.black,
                 ),
               ),
-              0.75.h.height, // spacing
+              0.75.h.height,
 
-              // SUBTITLE
+              /// SUBTITLE
               Text(
                 AppStrings.loginSubtitle,
                 style: StyleRefer.robotoRegular.copyWith(
                   color: AppColors.grey,
                 ),
               ),
-              4.h.height, // spacing
+              4.h.height,
 
-              // ================= FORM START =================
+              // ================= FORM =================
               Form(
                 key: _formKey,
                 child: Column(
@@ -221,14 +224,19 @@ class SignInPhoneView extends GetView<SignInLogic> {
                           hintText: 'Enter phone number',
                           keyboardType: TextInputType.phone,
                           onChanged: controller.setPhone,
+
+                          /// BASIC EMPTY VALIDATION
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return AppStrings.phone;
                             }
+                            if (controller.selectedCountry == null) {
+                              return 'Please select country';
+                            }
                             return null;
                           },
 
-                         /// PREFIX ICON (FLAG + DROPDOWN + |)
+                          /// PREFIX (FLAG PICKER)
                           prefix: Padding(
                             padding:
                                 const EdgeInsets.only(left: 12, right: 8),
@@ -238,8 +246,7 @@ class SignInPhoneView extends GetView<SignInLogic> {
                                   context: context,
                                   showPhoneCode: false,
                                   onSelect: (country) {
-                                    controller
-                                        .setCountryFlag(country.flagEmoji);
+                                    controller.setCountry(country);
                                   },
                                 );
                               },
@@ -247,7 +254,8 @@ class SignInPhoneView extends GetView<SignInLogic> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    controller.selectedFlag ?? '🇺🇸',
+                                    controller.selectedCountry?.flagEmoji ??
+                                        '🇺🇸',
                                     style: const TextStyle(fontSize: 20),
                                   ),
                                   const Icon(Icons.arrow_drop_down),
@@ -269,29 +277,39 @@ class SignInPhoneView extends GetView<SignInLogic> {
                       },
                     ),
 
-                    4.5.h.height, // spacing
+                    4.5.h.height,
 
+                    /// NEXT BUTTON WITH PHONE VALIDATION
                     CustomButton(
                       title: 'Next',
-                      onPressed: () {
-                        // Close keyboard
+                      onPressed: () async {
                         FocusScope.of(context).unfocus();
 
-                        // Validate
                         if (!_formKey.currentState!.validate()) return;
 
-                        // Navigate
+                        /// 🔥 COUNTRY-BASED PHONE VALIDATION
+                        final isValid =
+                            await controller.validatePhone();
+
+                        if (!isValid) {
+                          Get.snackbar(
+                            'Invalid Number',
+                            'Please enter a valid phone number',
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
+                          return;
+                        }
+
                         controller.goToOtp(controller.phone);
                       },
                     ),
                   ],
                 ),
               ),
-              // ================= FORM END =================
 
-              2.h.height, // spacing
+              2.h.height,
 
-              // FOOTER TEXT
+              /// FOOTER
               Center(
                 child: AuthFooterText(
                   fullText: AppStrings.dontHaveAccount,
@@ -302,7 +320,7 @@ class SignInPhoneView extends GetView<SignInLogic> {
                 ),
               ),
 
-              2.5.h.height, // bottom spacing
+              2.5.h.height,
             ],
           ),
         ),

@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:community_shopping_app/src/modules/profiles/profile_view.dart';
 import 'package:get/get.dart';
-
 class OtpLogic extends GetxController {
   final List<String> otp = List.filled(6, '');
 
   bool isVerifying = false;
   int resendSeconds = 30;
   Timer? _timer;
+
+  String? otpError; // 👈 NEW (error message)
 
   @override
   void onInit() {
@@ -17,27 +18,37 @@ class OtpLogic extends GetxController {
 
   void onOtpChanged(int index, String value) {
     otp[index] = value;
+    otpError = null; // 👈 error clear on typing
+    update();
   }
 
   String get enteredOtp => otp.join();
 
-  void onProfileView() {
-    Get.to(() => ProfileView());
+  /// ✅ OTP VALIDATION
+  bool validateOtp() {
+    if (enteredOtp.isEmpty || enteredOtp.length < 6) {
+      otpError = 'You must enter 6 digit code';
+      update();
+      return false;
+    }
+    return true;
   }
 
   void verifyOtp() async {
+    // ❌ validation fail
+    if (!validateOtp()) return;
+
     isVerifying = true;
     update();
 
     /// 🔄 Simulate API call
     await Future.delayed(const Duration(seconds: 2));
-    onProfileView();
 
     isVerifying = false;
     update();
 
     /// ✅ Navigate after success
-    // Get.offAllNamed('/home');
+    Get.to(() => ProfileView());
   }
 
   void startResendTimer() {
@@ -56,7 +67,6 @@ class OtpLogic extends GetxController {
 
   void resendOtp() {
     startResendTimer();
-    // 🔁 Call resend OTP API here
   }
 
   @override
