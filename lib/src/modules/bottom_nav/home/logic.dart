@@ -1,5 +1,4 @@
 import 'package:community_shopping_app/src/modules/bottom_nav/home/models/shoppingListModel.dart';
-import 'package:community_shopping_app/src/modules/sign%20in/signin%20_view.dart';
 import 'package:community_shopping_app/src/modules/splash/splash_view.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
@@ -83,12 +82,12 @@ class HomeLogic extends GetxController {
                   CustomTextField(
                     hintText: 'Enter Name',
                     textColor: AppColors.hintGrey,
-                     validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return AppStrings.productName;
-                            }
-                            return null;
-                          },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return AppStrings.productName;
+                      }
+                      return null;
+                    },
                     onChanged: (val) {
                       listNameController.text = val;
                     },
@@ -100,11 +99,11 @@ class HomeLogic extends GetxController {
                   CustomButton(
                     title: 'Create',
                     onPressed: () {
-                        if (!_formKey.currentState!.validate()) return;
-                          
-                        if (listNameController.text.isNotEmpty) {
-                             addList(listNameController.text);
-                             Get.back();
+                      if (!_formKey.currentState!.validate()) return;
+
+                      if (listNameController.text.isNotEmpty) {
+                        addList(listNameController.text);
+                        Get.back();
                       }
                     },
                   ),
@@ -119,6 +118,68 @@ class HomeLogic extends GetxController {
   }
 
 void onLogout() {
-  Get.offAll(() => SplashView());
+  final Gradient logoutGradient = AppColors.primaryButtonGradient;
+
+  // 🔹 Gradient text button (ONLY for Logout)
+  Widget gradientTextButton({
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return TextButton(
+      onPressed: onTap,
+      child: ShaderMask(
+        shaderCallback: (bounds) =>
+            logoutGradient.createShader(bounds),
+        child: Text(
+          title,
+          style:  TextStyle(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+            color: Colors.white, // required for ShaderMask
+          ),
+        ),
+      ),
+    );
+  }
+
+  Get.defaultDialog(
+    title: 'Logout',
+    titlePadding: const EdgeInsets.only(top: 20),
+    contentPadding:
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+
+    titleStyle:
+         TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+
+    middleText: 'Are you sure you want to logout?',
+    middleTextStyle:
+         TextStyle(fontSize: 12.sp, color: Colors.black54),
+
+    radius: 16,
+    barrierDismissible: false,
+
+    // 🔹 Logout → Gradient
+    confirm: gradientTextButton(
+      title: 'Logout',
+      onTap: () {
+        Get.back();
+        Get.offAll(() => const SplashView());
+      },
+    ),
+
+    // 🔹 Cancel → Red text
+    cancel: TextButton(
+      onPressed: () => Get.back(),
+      child:  Text(
+        'Cancel',
+        style: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColors.redColor
+        ),
+      ),
+    ),
+  );
 }
+
 }
