@@ -1,4 +1,3 @@
-
 // import 'package:community_shopping_app/src/modules/profiles/profile_logic.dart';
 // import 'package:community_shopping_app/src/utils/app_colors.dart';
 // import 'package:community_shopping_app/src/utils/app_fonts.dart';
@@ -187,11 +186,16 @@ class ProfileView extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.topRight,
-                    child: Text(
-                      'Skip',
-                      style: StyleRefer.robotoRegular.copyWith(
-                        fontSize: 12.sp,
-                        color: AppColors.black,
+                    child: InkWell(
+                      onTap: () {
+                        controller.goToBottomNavigation();
+                      },
+                      child: Text(
+                        'Skip',
+                        style: StyleRefer.robotoRegular.copyWith(
+                          fontSize: 12.sp,
+                          color: AppColors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -203,13 +207,13 @@ class ProfileView extends StatelessWidget {
                   Text(
                     'Profile Setup',
                     style: StyleRefer.robotoSemiBold.copyWith(
-                      fontSize: 14.sp, 
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.black,
                     ),
                   ),
 
-                  0.75.h.height, 
+                  0.75.h.height,
                   Text(
                     AppStrings.locationPermissionText,
                     style: StyleRefer.robotoRegular.copyWith(
@@ -217,7 +221,7 @@ class ProfileView extends StatelessWidget {
                     ),
                   ),
 
-                  4.h.height, 
+                  4.h.height,
 
                   // ================= FORM =================
                   Form(
@@ -231,13 +235,15 @@ class ProfileView extends StatelessWidget {
                             personIcon,
                             width: 20,
                             height: 20,
-                            color: controller.hasTypedGender ? Colors.black : Colors.grey,
+                            color: controller.hasTypedGender
+                                ? Colors.black
+                                : Colors.grey,
                           ),
                           onChanged: controller.setGender,
                           validator: genderValidator,
                         ),
 
-                        2.h.height, 
+                        2.h.height,
 
                         CustomTextField(
                           labelText: 'Postal Code',
@@ -247,7 +253,9 @@ class ProfileView extends StatelessWidget {
                             postal,
                             width: 20,
                             height: 20,
-                            color: controller.hasTypedpostal ? Colors.black : Colors.grey,
+                            color: controller.hasTypedpostal
+                                ? Colors.black
+                                : Colors.grey,
                           ),
                           onChanged: controller.setPostal,
                           validator: phoneValidator,
@@ -256,7 +264,7 @@ class ProfileView extends StatelessWidget {
                     ),
                   ),
 
-                  15.h.height, 
+                  15.h.height,
                 ],
               ),
             ),

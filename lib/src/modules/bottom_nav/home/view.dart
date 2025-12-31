@@ -16,6 +16,22 @@ class HomeView extends StatelessWidget {
       builder: (logic) {
         return Obx(() {
           return Scaffold(
+            drawer: Drawer(
+              backgroundColor: AppColors.white,
+              child: Column(
+                children: [
+                  10.h.height,
+                  ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text('Logout'),
+                    onTap: () {
+                      Get.back(); // close drawer
+                      logic.onLogout();
+                    },
+                  ),
+                ],
+              ),
+            ),
             backgroundColor: AppColors.white,
             body: Column(
               children: [

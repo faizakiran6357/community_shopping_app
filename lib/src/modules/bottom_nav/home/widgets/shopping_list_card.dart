@@ -31,7 +31,7 @@ class ShoppingListCard extends StatelessWidget {
             Text(
               'Welcome $userName!',
               style: StyleRefer.robotoSemiBold.copyWith(
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 color: AppColors.whiteColor,
               ),
             ),
@@ -76,7 +76,7 @@ class ShoppingListCard extends StatelessWidget {
                     Text(
                       'Shopping Lists',
                       style: StyleRefer.robotoMedium.copyWith(
-                        fontSize: 14.sp,
+                        fontSize: 12.sp,
                         color: AppColors.whiteColor,
                       ),
                     ),
@@ -95,8 +95,14 @@ class ShoppingListCard extends StatelessWidget {
 
               /// 🔹 Table Header
               Container(
+                decoration: BoxDecoration(
+                  color: AppColors.black.withOpacity(0.25),
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(4.w),
+                  ),
+                ),
                 padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.2.h),
-                color: AppColors.black.withOpacity(0.25),
+
                 child: Row(
                   children: [
                     _headerText('Name', 6),
@@ -175,7 +181,7 @@ class ShoppingListCard extends StatelessWidget {
             ? TextAlign.right
             : TextAlign.left,
         style: StyleRefer.robotoMedium.copyWith(
-          fontSize: 11.sp,
+          fontSize: 9.sp,
           color: AppColors.whiteColor,
         ),
       ),
@@ -189,7 +195,7 @@ class ShoppingListCard extends StatelessWidget {
         text,
         textAlign: center ? TextAlign.center : TextAlign.left,
         style: StyleRefer.robotoRegular.copyWith(
-          fontSize: 11.sp,
+          fontSize: 9.sp,
           color: AppColors.whiteColor,
         ),
       ),
