@@ -58,5 +58,7 @@ class AppStrings {
         "location is required";
 
 
+ static const String productName =
+        " product name is required";
 
 }

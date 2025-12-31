@@ -39,7 +39,7 @@ class SearchBarWidget extends StatelessWidget {
         decoration: InputDecoration(
           hintText: 'Search for a product',
           hintStyle: StyleRefer.robotoRegular.copyWith(
-            fontSize: 12.sp,
+            fontSize: 10.sp,
             color: AppColors.whiteColor,
           ),
           prefixIcon: Padding(

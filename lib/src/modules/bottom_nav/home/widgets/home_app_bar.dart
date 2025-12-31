@@ -5,7 +5,6 @@ import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
-
 class HomeAppBar extends StatelessWidget {
   final String userName;
   final VoidCallback onAdd;
@@ -22,11 +21,10 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-  
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         gradient: AppColors.primaryButtonGradient,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
@@ -41,18 +39,34 @@ class HomeAppBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image(image: AssetImage(drawer), width: 6.w, height: 6.w),
+              /// ✅ DRAWER ICON (UPDATED)
+              Builder(
+                builder: (context) => GestureDetector(
+                  onTap: () {
+                    Scaffold.of(context).openDrawer(); // ✅ built-in drawer
+                  },
+                  child: Image(
+                    image: AssetImage(drawer),
+                    width: 6.w,
+                    height: 6.w,
+                  ),
+                ),
+              ),
 
               Text(
                 'Home',
                 style: StyleRefer.robotoMedium.copyWith(
-                  fontSize: 16.sp,
+                  fontSize: 14.sp,
                   color: AppColors.whiteColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),
 
-              Image(image: AssetImage(notification), width: 6.w, height: 6.w),
+              Image(
+                image: AssetImage(notification),
+                width: 6.w,
+                height: 6.w,
+              ),
             ],
           ),
 

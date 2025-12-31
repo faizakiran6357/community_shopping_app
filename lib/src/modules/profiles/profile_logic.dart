@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/modules/bottom_nav/view.dart';
 import 'package:community_shopping_app/src/modules/location/location_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,5 +27,10 @@ class ProfileLogic extends GetxController {
   
   void goTolocation() {
     Get.to(() =>  LocationView());
+  }
+
+
+    void goToBottomNavigation() {
+    Get.to(() => BottomNavigationScreen());
   }
 }
