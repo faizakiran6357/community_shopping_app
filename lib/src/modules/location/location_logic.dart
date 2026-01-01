@@ -124,4 +124,8 @@ class LocationLogic extends GetxController {
   void goToBottomNavigation() {
     Get.to(() => BottomNavigationScreen());
   }
+    void updateLocation() {
+    print('Location updated: $locationText, radius: $radius km');
+    Get.snackbar('Success', 'Location updated successfully');
+  }
 }

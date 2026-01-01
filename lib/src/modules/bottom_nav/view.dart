@@ -15,6 +15,7 @@ class BottomNavigationScreen extends StatelessWidget {
       builder: (logic) {
         return Obx(() {
           return Scaffold(
+            backgroundColor: AppColors.white,
            
             /// ✅ DRAWER HERE (ONE TIME)
             drawer: Drawer(
@@ -131,13 +132,13 @@ class BottomNavigationScreen extends StatelessWidget {
                         _navItem(
                           icon: shoppingIcon,
                           label: 'Shopping',
-                          index: 2,
+                          index: 3,
                           logic: logic,
                         ),
                         _navItem(
                           icon: profileIcon,
                           label: 'Profile',
-                          index: 3,
+                          index: 4,
                           logic: logic,
                         ),
                       ],

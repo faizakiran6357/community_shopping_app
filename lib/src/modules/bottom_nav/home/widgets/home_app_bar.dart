@@ -1,7 +1,6 @@
 import 'package:community_shopping_app/src/modules/bottom_nav/home/widgets/search_bar_widget.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/home/widgets/shopping_list_card.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
-import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:community_shopping_app/src/widgets/custom_top_bar.dart';
