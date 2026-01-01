@@ -131,13 +131,13 @@ class BottomNavigationScreen extends StatelessWidget {
                         _navItem(
                           icon: shoppingIcon,
                           label: 'Shopping',
-                          index: 2,
+                          index: 3,
                           logic: logic,
                         ),
                         _navItem(
                           icon: profileIcon,
                           label: 'Profile',
-                          index: 3,
+                          index: 4,
                           logic: logic,
                         ),
                       ],
@@ -150,6 +150,7 @@ class BottomNavigationScreen extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         print("🔵 Scan button tapped!");
+                          logic.onItemTapped(2);
                       },
                       child: Container(
                         width: 65, // ✅ instead of 65
