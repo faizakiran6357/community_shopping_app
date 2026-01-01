@@ -1,3 +1,4 @@
+import 'package:community_shopping_app/src/modules/splash/splash_view.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart' as AppStrings;
@@ -6,7 +7,6 @@ import 'package:community_shopping_app/src/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});
 
@@ -14,9 +14,7 @@ class LogoutDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: AppColors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
         child: Column(
@@ -32,11 +30,7 @@ class LogoutDialog extends StatelessWidget {
             ),
 
             /// ICON
-            Image.asset(
-             logouticon,
-              width: 89.14,
-              height: 89.14,
-            ),
+            Image.asset(logouticon, width: 89.14, height: 89.14),
 
             const SizedBox(height: 14),
 
@@ -54,7 +48,7 @@ class LogoutDialog extends StatelessWidget {
 
             /// DESCRIPTION
             Text(
-              AppStrings.logout,
+              "Are you sure you want to logout?",
               textAlign: TextAlign.center,
               style: StyleRefer.robotoRegular.copyWith(
                 fontSize: 14,
