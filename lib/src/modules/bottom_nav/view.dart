@@ -1,4 +1,5 @@
 import 'package:community_shopping_app/src/utils/app_colors.dart';
+import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:community_shopping_app/src/utils/sizer.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,80 @@ class BottomNavigationScreen extends StatelessWidget {
       builder: (logic) {
         return Obx(() {
           return Scaffold(
+           
+            /// ✅ DRAWER HERE (ONE TIME)
+            drawer: Drawer(
+              
+              child: Column(
+                children: [
+                  DrawerHeader(
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryButtonGradient,
+                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              NetworkImage('https://i.pravatar.cc/150?img=3'),
+                        ),
+                        3.w.width,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Ahmad Khan',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600)),
+                            Text('ahmad@email.com',
+                                style: TextStyle(
+                                    color: Colors.white70, fontSize: 12)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.home_outlined,
+                    title: 'Home',
+                    onTap: () {
+                      logic.onItemTapped(0);
+                      Get.back();
+                    },
+                  ),
+
+                  _drawerItem(
+                    icon: Icons.list_alt_outlined,
+                    title: 'Lists',
+                    onTap: () {
+                      logic.onItemTapped(1);
+                      Get.back();
+                    },
+                  ),
+
+                  Divider(),
+
+                  _drawerItem(
+                    icon: Icons.logout,
+                    title: 'Logout',
+                    color: Colors.red,
+                    onTap: () {
+                      // logout logic
+                    },
+                  ),
+                ],
+              ),
+            ),
+
             extendBody: true,
+         
+
+
+
+
+
             body: IndexedStack(
               index: logic.selectedIndex.value,
               children: logic.pages,
@@ -224,4 +298,21 @@ class BottomBarPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+
+Widget _drawerItem({
+  required IconData icon,
+  required String title,
+  Color color = Colors.black,
+  required VoidCallback onTap,
+}) {
+  return ListTile(
+    leading: Icon(icon, color: color),
+    title: Text(
+      title,
+      style: StyleRefer.robotoRegular.copyWith(fontSize: 12.sp, color: color),
+    ),
+    onTap: onTap,
+  );
 }

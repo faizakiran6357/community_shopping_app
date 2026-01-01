@@ -4,7 +4,9 @@ import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:community_shopping_app/src/utils/sizer.dart';
+import 'package:community_shopping_app/src/widgets/custom_top_bar.dart';
 import 'package:flutter/material.dart';
+
 class HomeAppBar extends StatelessWidget {
   final String userName;
   final VoidCallback onAdd;
@@ -32,42 +34,19 @@ class HomeAppBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// 🔹 top spacing
-          6.h.height,
-
-          /// 🔹 AppBar Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              /// ✅ DRAWER ICON (UPDATED)
-              Builder(
-                builder: (context) => GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openDrawer(); // ✅ built-in drawer
-                  },
-                  child: Image(
-                    image: AssetImage(drawer),
-                    width: 6.w,
-                    height: 6.w,
-                  ),
-                ),
-              ),
-
-              Text(
-                'Home',
-                style: StyleRefer.robotoMedium.copyWith(
-                  fontSize: 14.sp,
-                  color: AppColors.whiteColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-
-              Image(
-                image: AssetImage(notification),
-                width: 6.w,
-                height: 6.w,
-              ),
-            ],
+         
+          CustomTopBar(
+            title: 'Home',
+              drawerIconColor: AppColors.white,
+            titleColor: AppColors.white,
+            suffixIcon: Image(
+              image: AssetImage(notification),
+              width: 6.w,
+              height: 6.w,
+            ),
+            onSuffixTap: () {
+              
+            },
           ),
 
           /// 🔹 space
