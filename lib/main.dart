@@ -1,3 +1,5 @@
+import 'package:community_shopping_app/src/modules/bottom_nav/home/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/view.dart';
 import 'package:community_shopping_app/src/modules/splash/splash_view.dart';
 import 'package:community_shopping_app/src/utils/theme_collection.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       // ===============================
       // INITIAL SCREEN
       // ===============================
-      home: const SplashView(),
+      home: const BottomNavigationScreen(),
     );
   }
 }

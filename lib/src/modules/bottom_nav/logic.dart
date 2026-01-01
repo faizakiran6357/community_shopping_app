@@ -1,4 +1,5 @@
 import 'package:community_shopping_app/src/modules/bottom_nav/home/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/list/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class BottomNavigationScreenLogic extends GetxController {
   /// Bottom tabs pages
   final List<Widget> pages = [
      const HomeView(),   
-     ListView(),
+     ListsScreen(),
        //HomeView(), 
            // 👈 index 0 (Your Home Page)
     // MoodLogView(),
