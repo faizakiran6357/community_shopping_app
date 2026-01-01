@@ -17,18 +17,27 @@ class HomeView extends StatelessWidget {
         return Obx(() {
           return Column(
             children: [
+              /// 🔹 Top gradient container: Custom top bar + search bar
               HomeAppBar(
                 userName: logic.userName.value,
                 onAdd: logic.openCreateListDialog,
                 onSeeAll: logic.onSeeAll,
               ),
 
-              12.h.height,
-
-              if (logic.shoppingLists.isEmpty)
-                EmptyStateWidget()
-              else
-                const SizedBox(),
+              /// 🔹 Rest of the screen must scroll
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+                  child: Column(
+                    children: [
+                      if (logic.shoppingLists.isEmpty)
+                        EmptyStateWidget()
+                    
+                     
+                    ],
+                  ),
+                ),
+              ),
             ],
           );
         });

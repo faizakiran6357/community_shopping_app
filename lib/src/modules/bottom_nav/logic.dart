@@ -1,5 +1,7 @@
 import 'package:community_shopping_app/src/modules/bottom_nav/home/view.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/list/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/scanner_screen/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/shopping/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +13,8 @@ class BottomNavigationScreenLogic extends GetxController {
   final List<Widget> pages = [
      const HomeView(),   
      ListsScreen(),
+     ScannerScreen(),
+     ShoppingView()
        //HomeView(), 
            // 👈 index 0 (Your Home Page)
     // MoodLogView(),
@@ -42,6 +46,11 @@ class BottomNavigationScreenLogic extends GetxController {
       case 3:
         print('Settings opened');
         break;
+       case 4:
+        print('Settings opened');
+        break;
     }
   }
+
+
 }

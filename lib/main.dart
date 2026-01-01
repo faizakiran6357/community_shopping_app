@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
       // ===============================
       // INITIAL SCREEN
       // ===============================
-      home: const BottomNavigationScreen(),
+      home: SplashView()
+      //const BottomNavigationScreen(),
     );
   }
 }
