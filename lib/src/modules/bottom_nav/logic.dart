@@ -4,12 +4,15 @@ import 'package:community_shopping_app/src/modules/bottom_nav/scanner_screen/vie
 import 'package:community_shopping_app/src/modules/bottom_nav/shopping/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/home/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/list/view.dart';
 
 
 class BottomNavigationScreenLogic extends GetxController {
-  RxInt selectedIndex = 0.obs;
+  /// Selected tab index
+  final RxInt selectedIndex = 0.obs;
 
-  /// Bottom tabs pages
+  /// Bottom Navigation Pages
   final List<Widget> pages = [
      const HomeView(),   
      ListsScreen(),
@@ -24,27 +27,29 @@ class BottomNavigationScreenLogic extends GetxController {
 
   /// Tab click handler
   void onItemTapped(int index) {
-    // Same tab tap → pop to root
-  //  Get.until((route) => route.isFirst, id: index);
+    if (index >= pages.length) return; // 🛡 safety guard
 
     selectedIndex.value = index;
     onPageChanged(index);
   }
 
-  /// Tab change callback (sir-level logic hook)
+  /// Page change callback
   void onPageChanged(int index) {
     switch (index) {
       case 0:
         print('Home opened');
         break;
       case 1:
-        print('Mood Log opened');
+        print('Lists opened');
         break;
       case 2:
-        print('Export opened');
+        print('Shopping opened');
         break;
       case 3:
-        print('Settings opened');
+        print('Profile opened');
+        break;
+      case 4:
+        print('Profile opened');
         break;
        case 4:
         print('Settings opened');

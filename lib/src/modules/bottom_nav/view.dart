@@ -15,6 +15,7 @@ class BottomNavigationScreen extends StatelessWidget {
       builder: (logic) {
         return Obx(() {
           return Scaffold(
+            backgroundColor: AppColors.white,
            
             /// ✅ DRAWER HERE (ONE TIME)
             drawer: Drawer(

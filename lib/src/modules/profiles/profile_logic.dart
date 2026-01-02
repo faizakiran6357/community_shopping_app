@@ -10,6 +10,7 @@ class ProfileLogic extends GetxController {
   
   String gender = '';
   String postal = '';
+
   void setGender(String value) {
     gender = value;
     if (value.isNotEmpty) hasTypedGender = true;
