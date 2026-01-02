@@ -1,5 +1,6 @@
 import 'package:community_shopping_app/src/modules/bottom_nav/home/view.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/list/view.dart';
+import 'package:community_shopping_app/src/modules/bottom_nav/profile/view.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/scanner_screen/view.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/shopping/view.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,8 @@ class BottomNavigationScreenLogic extends GetxController {
      const HomeView(),   
      ListsScreen(),
      ScannerScreen(),
-     ShoppingView()
+     ShoppingView(),
+     ProfileNavView()
        //HomeView(), 
            // 👈 index 0 (Your Home Page)
     // MoodLogView(),
@@ -50,9 +52,6 @@ class BottomNavigationScreenLogic extends GetxController {
         break;
       case 4:
         print('Profile opened');
-        break;
-       case 4:
-        print('Settings opened');
         break;
     }
   }
