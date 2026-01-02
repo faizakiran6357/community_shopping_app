@@ -1,11 +1,10 @@
+import 'package:community_shopping_app/src/modules/splash/splash_view.dart';
 import 'package:community_shopping_app/src/utils/app_colors.dart';
 import 'package:community_shopping_app/src/utils/app_fonts.dart';
-import 'package:community_shopping_app/src/utils/app_images.dart' as AppStrings;
 import 'package:community_shopping_app/src/utils/app_images.dart';
 import 'package:community_shopping_app/src/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class DeleteAccountDialog extends StatelessWidget {
   const DeleteAccountDialog({super.key});
@@ -14,11 +13,9 @@ class DeleteAccountDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       backgroundColor: AppColors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 22),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 22),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -32,11 +29,7 @@ class DeleteAccountDialog extends StatelessWidget {
             ),
 
             /// ICON
-            Image.asset(
-              deleteicon,
-              width: 89.14,
-              height: 89.14,
-            ),
+            Image.asset(deleteicon, width: 89.14, height: 89.14),
 
             const SizedBox(height: 14),
 
@@ -54,7 +47,7 @@ class DeleteAccountDialog extends StatelessWidget {
 
             /// DESCRIPTION
             Text(
-             "Are you sure you want to delete your account? ",
+              "Do you really want to delete this Account?",
               textAlign: TextAlign.center,
               style: StyleRefer.robotoRegular.copyWith(
                 fontSize: 14,
@@ -68,8 +61,7 @@ class DeleteAccountDialog extends StatelessWidget {
             CustomButton(
               title: "Delete",
               onPressed: () {
-                Get.back();
-                // delete account logic later
+                Get.offAll(() => const SplashView());
               },
             ),
           ],

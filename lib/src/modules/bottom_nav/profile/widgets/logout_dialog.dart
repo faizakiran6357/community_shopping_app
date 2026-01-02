@@ -48,7 +48,7 @@ class LogoutDialog extends StatelessWidget {
 
             /// DESCRIPTION
             Text(
-              "Are you sure you want to logout?",
+              "Do you really want to logout this Account?",
               textAlign: TextAlign.center,
               style: StyleRefer.robotoRegular.copyWith(
                 fontSize: 14,
@@ -62,8 +62,7 @@ class LogoutDialog extends StatelessWidget {
             CustomButton(
               title: "Logout",
               onPressed: () {
-                Get.back();
-                // logout logic later
+                Get.back(result: true); // ✔ confirm logout
               },
             ),
           ],

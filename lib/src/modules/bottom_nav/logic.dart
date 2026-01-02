@@ -59,14 +59,6 @@ class BottomNavigationScreenLogic extends GetxController {
   final RxInt selectedIndex = 0.obs;
 
   /// Bottom Navigation Pages
-  /// ⚠️ IMPORTANT:
-  /// Number of pages MUST match bottom nav items count
-  // final List<Widget> pages = [
-  //   const HomeView(),     // index 0 → Home
-  //   ListsScreen(),        // index 1 → Lists
-  //   //ShoppingView(),       // index 2 → Shopping
-  //    ProfileNavView(), // index 3 → Profile
-  // ];
   final List<Widget> pages = [
   const HomeView(),        // index 0 → Home
   ListsScreen(),           // index 1 → Lists

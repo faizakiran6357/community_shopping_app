@@ -5,15 +5,13 @@ import 'package:community_shopping_app/src/modules/bottom_nav/profile/profiletil
 import 'package:community_shopping_app/src/modules/bottom_nav/profile/widgets/delete_account_dialog.dart';
 import 'package:community_shopping_app/src/modules/bottom_nav/profile/widgets/logout_dialog.dart';
 import 'package:community_shopping_app/src/modules/location/location_view.dart';
-import 'package:community_shopping_app/src/utils/app_strings.dart';
+import 'package:community_shopping_app/src/modules/splash/splash_view.dart';
 import 'package:get/get.dart';
 
 class ProfileNavLogic extends GetxController {
   final RxBool isLoading = false.obs;
 
-  // void onProfileTap() {
-  //   print('Profile tapped');
-  // }
+ 
   void onProfileTap() {
   Get.to(() => ProfileTileView());
 }
@@ -37,19 +35,18 @@ class ProfileNavLogic extends GetxController {
   Get.to(() => const AboutUsView());
   }
 
-  // void onLogoutTap() {
-  //   print('Logout tapped');
-  // }
 
-  // void onDeleteAccountTap() {
-  //   print('Delete Account tapped');
-  // }
-    void onLogoutTap() {
-    Get.dialog(
-      const LogoutDialog(),
-      barrierDismissible: true,
-    );
+  void onLogoutTap() async {
+  final result = await Get.dialog(
+    const LogoutDialog(),
+    barrierDismissible: true,
+  );
+
+  if (result == true) {
+    // 🔐 clear session / token later
+    Get.offAll(() => const SplashView());
   }
+}
 
   void onDeleteAccountTap() {
     Get.dialog(
@@ -57,4 +54,5 @@ class ProfileNavLogic extends GetxController {
       barrierDismissible: true,
     );
   }
+ 
 }
