@@ -151,6 +151,7 @@ class BottomNavigationScreen extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         print("🔵 Scan button tapped!");
+                          logic.onItemTapped(2);
                       },
                       child: Container(
                         width: 65, // ✅ instead of 65
